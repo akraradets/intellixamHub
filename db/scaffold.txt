@@ -1,0 +1,1 @@
+rails g scaffold building name:string{50} address:string{200} 'latitude:decimal{9,6}' 'longitude:decimal{9,6}' created_by:string{50} updated_by:string{50}

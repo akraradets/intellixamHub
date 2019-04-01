@@ -15,7 +15,11 @@ class BuildingsTest < ApplicationSystemTestCase
     click_on "New Building"
 
     fill_in "Address", with: @building.address
+    fill_in "Created by", with: @building.created_by
+    fill_in "Latitude", with: @building.latitude
+    fill_in "Longitude", with: @building.longitude
     fill_in "Name", with: @building.name
+    fill_in "Updated by", with: @building.updated_by
     click_on "Create Building"
 
     assert_text "Building was successfully created"
@@ -27,7 +31,11 @@ class BuildingsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Address", with: @building.address
+    fill_in "Created by", with: @building.created_by
+    fill_in "Latitude", with: @building.latitude
+    fill_in "Longitude", with: @building.longitude
     fill_in "Name", with: @building.name
+    fill_in "Updated by", with: @building.updated_by
     click_on "Update Building"
 
     assert_text "Building was successfully updated"

@@ -10,5 +10,25 @@
   <%= @building.address %>
 </p>
 
+<p>
+  <strong>Latitude:</strong>
+  <%= @building.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @building.longitude %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @building.created_by %>
+</p>
+
+<p>
+  <strong>Updated by:</strong>
+  <%= @building.updated_by %>
+</p>
+
 <%= link_to 'Edit', edit_building_path(@building) %> |
 <%= link_to 'Back', buildings_path %>
