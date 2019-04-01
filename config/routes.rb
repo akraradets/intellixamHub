@@ -1,13 +1,10 @@
 Rails.application.routes.draw do
-  ##### Guests Route #####
-  # root to: 'buildings#index'
-  get '/admins', to: redirect('/admins/sign_in')
   ##### Admins Route #####
   devise_for :admins, controllers: { sessions: 'admins/sessions' }
   authenticated :admin do
-    root to: 'buildings#index', as: :authenticated_root
+    root to: redirect('/admins/'), as: :authenticated_root
     namespace :admins do
-      get 'landing_page/index'
+      get '/', to: "landing_page#index"
     end
     get '/admins/sign_out', to: 'admins/sessions#destroy'
   end
@@ -15,6 +12,13 @@ Rails.application.routes.draw do
   resources :buildings
   ##### Candidates Route #####
   ##### Organizations Route #####
+
+
+
+  ##### Guests Route #####
+  # root to: 'buildings#index'
+  get '/admins', to: redirect('/admins/sign_in')
+
   # authenticated :user do
   #   root to: 'papers#index', as: :authenticated_root
   # end
