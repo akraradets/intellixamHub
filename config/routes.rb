@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
   ##### Guests Route #####
-  root to: 'buildings#index'
+  # root to: 'buildings#index'
+  get '/admins', to: redirect('/admins/sign_in')
   ##### Admins Route #####
   devise_for :admins, controllers: { sessions: 'admins/sessions' }
-  get '/admins/sign_out', to: 'admins/sessions#destroy'
+  authenticated :admin do
+    root to: 'buildings#index', as: :authenticated_root
+    namespace :admins do
+      get 'landing_page/index'
+    end
+    get '/admins/sign_out', to: 'admins/sessions#destroy'
+  end
   # root to: redirect('/users/sign_in')
   resources :buildings
   ##### Candidates Route #####
