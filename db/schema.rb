@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_02_073931) do
+ActiveRecord::Schema.define(version: 2019_04_02_145141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,19 @@ ActiveRecord::Schema.define(version: 2019_04_02_073931) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "exams", force: :cascade do |t|
+    t.bigint "owner_id", null: false
+    t.string "title", limit: 50, null: false
+    t.string "description", limit: 500
+    t.string "format", limit: 30
+    t.integer "fee", null: false
+    t.string "created_by", limit: 50
+    t.string "updated_by", limit: 50
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_exams_on_owner_id"
+  end
+
   create_table "organizations", force: :cascade do |t|
     t.string "username", limit: 50, null: false
     t.string "encrypted_password", limit: 100, null: false
@@ -80,4 +93,5 @@ ActiveRecord::Schema.define(version: 2019_04_02_073931) do
     t.index ["username"], name: "index_organizations_on_username", unique: true
   end
 
+  add_foreign_key "exams", "organizations", column: "owner_id"
 end

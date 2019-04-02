@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  owner: one
+  title: MyString
+  description: MyString
+  format: MyString
+  fee: 1
+  created_by: MyString
+  updated_by: MyString
+
+two:
+  owner: two
+  title: MyString
+  description: MyString
+  format: MyString
+  fee: 1
+  created_by: MyString
+  updated_by: MyString

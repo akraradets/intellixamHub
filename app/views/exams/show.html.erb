@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @exam.owner %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @exam.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @exam.description %>
+</p>
+
+<p>
+  <strong>Format:</strong>
+  <%= @exam.format %>
+</p>
+
+<p>
+  <strong>Fee:</strong>
+  <%= @exam.fee %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @exam.created_by %>
+</p>
+
+<p>
+  <strong>Updated by:</strong>
+  <%= @exam.updated_by %>
+</p>
+
+<%= link_to 'Edit', edit_exam_path(@exam) %> |
+<%= link_to 'Back', exams_path %>
