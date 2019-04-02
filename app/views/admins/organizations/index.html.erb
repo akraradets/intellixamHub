@@ -4,9 +4,15 @@
 </script>
 <p id="notice"><%= notice %></p>
 
-<h1>Organizations</h1>
-
-<table class="table table-striped table-sm table-hover">
+<h1>Manage Organization</h1>
+<div class="row">
+  <div class="col-12 float-right">
+    <a class="btn btn-info float-right" href="<%= new_admins_organization_path %>">
+      <i class="fas fa-plus-circle" style="margin-right: 10px;"></i> New Organization Account
+    </a>
+  </div>
+</div>
+<table class="table table-striped table-sm table-hover" style="margin-top: 10px;">
   <thead class="thead-dark">
     <tr>
       <th>Organization Name</th>
@@ -44,7 +50,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Admins Organization', new_admins_organization_path %>

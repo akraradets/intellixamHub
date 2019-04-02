@@ -70,6 +70,16 @@ class Admins::OrganizationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admins_organization_params
-      params.require(:admins_organization).permit(:username, :encrypted_password, :tax_id, :email, :name, :address, :created_by)
+      params.require(:admins_organization).permit(:name, 
+        :tax_id,
+        :address,
+        :contact_name,
+        :phone_no,
+        :email,
+        :note,
+        :username,
+        :password,
+        :password_confirm
+      )
     end
 end
