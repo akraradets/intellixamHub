@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     root to: redirect('/admins/'), as: :authenticated_root
     namespace :admins do
       get '/', to: "landing_page#index"
+      # can CRUD organizations
+      resources :organizations
     end
     get '/admins/sign_out', to: 'admins/sessions#destroy'
   end

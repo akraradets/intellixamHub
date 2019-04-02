@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @admins_organization.username %>
+</p>
+
+<p>
+  <strong>Encrypted password:</strong>
+  <%= @admins_organization.encrypted_password %>
+</p>
+
+<p>
+  <strong>Tax:</strong>
+  <%= @admins_organization.tax_id %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @admins_organization.email %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @admins_organization.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @admins_organization.address %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @admins_organization.created_by %>
+</p>
+
+<%= link_to 'Edit', edit_admins_organization_path(@admins_organization) %> |
+<%= link_to 'Back', admins_organizations_path %>

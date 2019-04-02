@@ -11,5 +11,15 @@ Admin.create!(username: 'admin',
     firstname:'Administrator',
     lastname:'Naja',
     password: 'password', 
-    password_confirmation: 'password'
+    password_confirmation: 'password',
+    created_by: 'system'
+    )
+Organization.create!(username: 'AIT',
+    tax_id: 'TAX123456789',
+    email:'st120224@ait.asia',
+    name:'Asian Institute of Technology',
+    address:'หมู่ที่ 9 58 Phahonyothin Rd, Khlong Nueng, Khlong Luang District, Pathum Thani 12120',
+    password: 'password', 
+    password_confirmation: 'password',
+    created_by: 'system'
     )
