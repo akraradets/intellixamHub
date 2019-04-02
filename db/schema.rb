@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_02_145141) do
+ActiveRecord::Schema.define(version: 2019_04_02_145855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2019_04_02_145141) do
     t.string "description", limit: 500
     t.string "format", limit: 30
     t.integer "fee", null: false
+    t.integer "max_enrollment", null: false
     t.string "created_by", limit: 50
     t.string "updated_by", limit: 50
     t.datetime "created_at", null: false

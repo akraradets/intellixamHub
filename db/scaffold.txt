@@ -3,4 +3,4 @@ rake db:drop db:create db:migrate db:seed
 
 rails g scaffold building name:string{50} address:string{200} 'latitude:decimal{9,6}' 'longitude:decimal{9,6}' created_by:string{50} updated_by:string{50}
 
-rails g scaffold exam owner:references title:string{50}  description:string{500} format:string{30} fee:integer created_by:string{50} updated_by:string{50}
+rails g scaffold exam owner:references title:string{50}  description:string{500} format:string{30} fee:integer max_enrollment:integer created_by:string{50} updated_by:string{50}

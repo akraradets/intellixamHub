@@ -6,6 +6,7 @@ one:
   description: MyString
   format: MyString
   fee: 1
+  max_enrollment: 1
   created_by: MyString
   updated_by: MyString
 
@@ -15,5 +16,6 @@ two:
   description: MyString
   format: MyString
   fee: 1
+  max_enrollment: 1
   created_by: MyString
   updated_by: MyString
