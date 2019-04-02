@@ -2,18 +2,26 @@ Rails.application.routes.draw do
   ##### Admins Route #####
   devise_for :admins, controllers: { sessions: 'admins/sessions' }
   authenticated :admin do
-    root to: redirect('/admins/'), as: :authenticated_root
+    root to: redirect('/admins/'), :as => "admin_authenticated_root"
+    get '/admins/sign_out', to: 'admins/sessions#destroy'
     namespace :admins do
       get '/', to: "landing_page#index"
       # can CRUD organizations
       resources :organizations
     end
-    get '/admins/sign_out', to: 'admins/sessions#destroy'
   end
 
   ##### Organizations Route #####
   devise_for :organizations, controllers: { sessions: 'organizations/sessions' }
-  
+  authenticated :organization do
+    root to: redirect('/organizations/'), :as => "organization_authenticated_root"
+    get '/organizations/sign_out', to: 'organizations/sessions#destroy'
+    namespace :organizations do
+      get '/', to: "landing_page#index"
+      # can CRUD organizations
+      resources :organizations
+    end
+  end  
   ##### Candidates Route #####
   
   

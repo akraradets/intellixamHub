@@ -6,10 +6,13 @@ class DeviseCreateOrganizations < ActiveRecord::Migration[5.2]
       ## Database authenticatable
       t.string :username,           null: false, limit: 50
       t.string :encrypted_password, null: false, limit: 100
-      t.string :tax_id,             null: false, limit: 30
-      t.string :email,              null: false, limit: 100
       t.string :name,               null: false, limit: 100
+      t.string :tax_id,             null: false, limit: 30
       t.string :address,                         limit: 200
+      t.string :contact_name,                    limit: 100
+      t.string :phone_no,                        limit: 20
+      t.string :email,              null: false, limit: 100
+      t.string :contact_note,                    limit: 500
       t.string :created_by,                      limit: 50
       t.string :updated_by,                      limit: 50
 

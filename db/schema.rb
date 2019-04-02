@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2019_04_02_073931) do
     t.string "email", limit: 100, null: false
     t.string "firstname", limit: 50, null: false
     t.string "lastname", limit: 50, null: false
+    t.string "phone_no", limit: 20, null: false
     t.string "created_by", limit: 50
     t.string "updated_by", limit: 50
     t.string "reset_password_token"
@@ -54,10 +55,13 @@ ActiveRecord::Schema.define(version: 2019_04_02_073931) do
   create_table "organizations", force: :cascade do |t|
     t.string "username", limit: 50, null: false
     t.string "encrypted_password", limit: 100, null: false
-    t.string "tax_id", limit: 30, null: false
-    t.string "email", limit: 100, null: false
     t.string "name", limit: 100, null: false
+    t.string "tax_id", limit: 30, null: false
     t.string "address", limit: 200
+    t.string "contact_name", limit: 100
+    t.string "phone_no", limit: 20
+    t.string "email", limit: 100, null: false
+    t.string "contact_note", limit: 500
     t.string "created_by", limit: 50
     t.string "updated_by", limit: 50
     t.string "reset_password_token"

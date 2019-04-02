@@ -10,6 +10,7 @@ class DeviseCreateAdmins < ActiveRecord::Migration[5.2]
       t.string :email,              null: false, limit: 100
       t.string :firstname,          null: false, limit: 50
       t.string :lastname,           null: false, limit: 50
+      t.string :phone_no,           null: false, limit: 20
       t.string :created_by,                      limit: 50
       t.string :updated_by,                      limit: 50
 
