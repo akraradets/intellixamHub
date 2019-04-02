@@ -3,4 +3,6 @@ class Organization < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
+
+  has_many :exams, :class_name => 'Exam', :foreign_key => 'owner'
 end
