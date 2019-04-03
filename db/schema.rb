@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_02_145855) do
+ActiveRecord::Schema.define(version: 2019_04_03_092002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,26 @@ ActiveRecord::Schema.define(version: 2019_04_02_145855) do
     t.string "updated_by", limit: 50
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "candidates", force: :cascade do |t|
+    t.string "username", limit: 50, null: false
+    t.string "encrypted_password", limit: 100, null: false
+    t.string "firstname", limit: 50, null: false
+    t.string "lastname", limit: 50, null: false
+    t.string "phone_no", limit: 20
+    t.string "gender", limit: 1, null: false
+    t.date "birthday", null: false
+    t.string "address", limit: 200
+    t.string "created_by", limit: 50
+    t.string "updated_by", limit: 50
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reset_password_token"], name: "index_candidates_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_candidates_on_username", unique: true
   end
 
   create_table "exams", force: :cascade do |t|
