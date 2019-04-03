@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 30) do
+ActiveRecord::Schema.define(version: 31) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,15 @@ ActiveRecord::Schema.define(version: 30) do
     t.index ["username"], name: "index_candidates_on_username", unique: true
   end
 
+  create_table "enrollments", force: :cascade do |t|
+    t.bigint "exam_id"
+    t.bigint "candidate_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["candidate_id"], name: "index_enrollments_on_candidate_id"
+    t.index ["exam_id"], name: "index_enrollments_on_exam_id"
+  end
+
   create_table "exams", force: :cascade do |t|
     t.bigint "owner_id", null: false
     t.string "title", limit: 50, null: false
@@ -119,5 +128,7 @@ ActiveRecord::Schema.define(version: 30) do
     t.index ["username"], name: "index_organizations_on_username", unique: true
   end
 
+  add_foreign_key "enrollments", "candidates"
+  add_foreign_key "enrollments", "exams"
   add_foreign_key "exams", "organizations", column: "owner_id"
 end
