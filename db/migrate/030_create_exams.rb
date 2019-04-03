@@ -7,6 +7,7 @@ class CreateExams < ActiveRecord::Migration[5.2]
       t.string     :format,                      limit: 30
       t.integer    :fee,            null: false
       t.integer    :max_enrollment, null: false
+      t.string     :status,         null: false, limit: 50
       t.string     :created_by,                  limit: 50
       t.string     :updated_by,                  limit: 50
 

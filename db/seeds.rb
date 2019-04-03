@@ -28,3 +28,12 @@ Organization.create!(username: 'AIT',
     password_confirmation: 'password',
     created_by: 'system'
     )
+
+Candidate.create!(username: 'akraradets',
+    firstname: 'Akraradet',
+    lastname: 'Sinsamersuk',
+    phone_no: '089-122-2061',
+    gender: 'M',
+    birthday: Date.new(1992,9,23),
+    created_by: 'system'
+)

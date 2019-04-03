@@ -20,6 +20,7 @@ class ExamsTest < ApplicationSystemTestCase
     fill_in "Format", with: @exam.format
     fill_in "Max enrollment", with: @exam.max_enrollment
     fill_in "Owner", with: @exam.owner_id
+    fill_in "Status", with: @exam.status
     fill_in "Title", with: @exam.title
     fill_in "Updated by", with: @exam.updated_by
     click_on "Create Exam"
@@ -38,6 +39,7 @@ class ExamsTest < ApplicationSystemTestCase
     fill_in "Format", with: @exam.format
     fill_in "Max enrollment", with: @exam.max_enrollment
     fill_in "Owner", with: @exam.owner_id
+    fill_in "Status", with: @exam.status
     fill_in "Title", with: @exam.title
     fill_in "Updated by", with: @exam.updated_by
     click_on "Update Exam"
