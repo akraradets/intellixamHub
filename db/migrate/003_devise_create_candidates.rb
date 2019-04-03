@@ -12,6 +12,8 @@ class DeviseCreateCandidates < ActiveRecord::Migration[5.2]
       t.string :gender,             null: false, limit: 1
       t.date   :birthday,           null: false
       t.string :address,                         limit: 200
+      t.string :email,              null: false, limit: 100
+      t.string :citizen_id,         null: false, limit: 30
       t.string :created_by,                      limit: 50
       t.string :updated_by,                      limit: 50
 
@@ -44,8 +46,9 @@ class DeviseCreateCandidates < ActiveRecord::Migration[5.2]
 
       t.timestamps null: false
     end
-
     add_index :candidates, :username,             unique: true
+    add_index :candidates, :email,                unique: true
+    add_index :candidates, :citizen_id,           unique: true
     add_index :candidates, :reset_password_token, unique: true
     # add_index :candidates, :confirmation_token,   unique: true
     # add_index :candidates, :unlock_token,         unique: true

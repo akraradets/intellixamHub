@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(version: 30) do
     t.string "gender", limit: 1, null: false
     t.date "birthday", null: false
     t.string "address", limit: 200
+    t.string "email", limit: 100, null: false
+    t.string "citizen_id", limit: 30, null: false
     t.string "created_by", limit: 50
     t.string "updated_by", limit: 50
     t.string "reset_password_token"
@@ -68,6 +70,8 @@ ActiveRecord::Schema.define(version: 30) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["citizen_id"], name: "index_candidates_on_citizen_id", unique: true
+    t.index ["email"], name: "index_candidates_on_email", unique: true
     t.index ["reset_password_token"], name: "index_candidates_on_reset_password_token", unique: true
     t.index ["username"], name: "index_candidates_on_username", unique: true
   end
