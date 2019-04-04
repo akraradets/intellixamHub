@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :rooms
   resources :exams
   ##### Admins Route #####
   devise_for :admins, controllers: { sessions: 'admins/sessions' }

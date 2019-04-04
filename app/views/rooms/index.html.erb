@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Rooms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Building</th>
+      <th>Name</th>
+      <th>Floor</th>
+      <th>Max row</th>
+      <th>Max column</th>
+      <th>Created by</th>
+      <th>Updated by</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rooms.each do |room| %>
+      <tr>
+        <td><%= room.building %></td>
+        <td><%= room.name %></td>
+        <td><%= room.floor %></td>
+        <td><%= room.max_row %></td>
+        <td><%= room.max_column %></td>
+        <td><%= room.created_by %></td>
+        <td><%= room.updated_by %></td>
+        <td><%= link_to 'Show', room %></td>
+        <td><%= link_to 'Edit', edit_room_path(room) %></td>
+        <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Room', new_room_path %>

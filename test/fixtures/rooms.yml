@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  building: one
+  name: MyString
+  floor: MyString
+  max_row: 1
+  max_column: 1
+  created_by: MyString
+  updated_by: MyString
+
+two:
+  building: two
+  name: MyString
+  floor: MyString
+  max_row: 1
+  max_column: 1
+  created_by: MyString
+  updated_by: MyString
