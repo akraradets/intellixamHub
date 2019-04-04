@@ -17,7 +17,7 @@ class ExamsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create exam" do
     assert_difference('Exam.count') do
-      post exams_url, params: { exam: { created_by: @exam.created_by, description: @exam.description, fee: @exam.fee, format: @exam.format, max_enrollment: @exam.max_enrollment, owner_id: @exam.owner_id, status: @exam.status, title: @exam.title, updated_by: @exam.updated_by } }
+      post exams_url, params: { exam: { created_by: @exam.created_by, description: @exam.description, end_time: @exam.end_time, fee: @exam.fee, format: @exam.format, max_enrollment: @exam.max_enrollment, owner_id: @exam.owner_id, start_time: @exam.start_time, status: @exam.status, title: @exam.title, updated_by: @exam.updated_by } }
     end
 
     assert_redirected_to exam_url(Exam.last)
@@ -34,7 +34,7 @@ class ExamsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update exam" do
-    patch exam_url(@exam), params: { exam: { created_by: @exam.created_by, description: @exam.description, fee: @exam.fee, format: @exam.format, max_enrollment: @exam.max_enrollment, owner_id: @exam.owner_id, status: @exam.status, title: @exam.title, updated_by: @exam.updated_by } }
+    patch exam_url(@exam), params: { exam: { created_by: @exam.created_by, description: @exam.description, end_time: @exam.end_time, fee: @exam.fee, format: @exam.format, max_enrollment: @exam.max_enrollment, owner_id: @exam.owner_id, start_time: @exam.start_time, status: @exam.status, title: @exam.title, updated_by: @exam.updated_by } }
     assert_redirected_to exam_url(@exam)
   end
 

@@ -3,13 +3,9 @@
 one:
   exam: one
   room: one
-  start_time: 2019-04-04 13:56:25
-  end_time: 2019-04-04 13:56:25
   created_by: MyString
 
 two:
   exam: two
   room: two
-  start_time: 2019-04-04 13:56:25
-  end_time: 2019-04-04 13:56:25
   created_by: MyString

@@ -7,10 +7,10 @@ rails g scaffold rooms building:references name:string{50} floor:string{3} max_r
 
 
 
-rails g scaffold exam owner:references title:string{50}  description:string{500} format:string{30} fee:integer max_enrollment:integer status:string{50} created_by:string{50} updated_by:string{50}
+rails g scaffold exam owner:references title:string{50}  description:string{500} format:string{30} fee:integer max_enrollment:integer status:string{50} start_time:datetime end_time:datetime created_by:string{50} updated_by:string{50}
 
 ### Join Table ###
 # exam - enrollment - candidate
 rails g model enrollments exam:references candidate:references
 # exam - reservation - resource
-rails g model reservations exam:references room:references start_time:datetime end_time:datetime created_by:string{50}
+rails g model reservations exam:references room:references created_by:string{50}

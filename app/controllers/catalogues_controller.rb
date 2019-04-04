@@ -4,7 +4,9 @@ class CataloguesController < ApplicationController
   # GET /
   # GET /catalouges.json
   def index
-    @exams = Exam.all
+    # @exams = Exam.all
+    @exams = Exam.where('status = ?','Running')
+
   end
   
 end

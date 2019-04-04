@@ -16,7 +16,7 @@ Admin.create!(username: 'admin',
     created_by: 'system'
     )
 
-Organization.create!(username: 'AIT',
+org_ait = Organization.create!(username: 'AIT',
     tax_id: 'TAX123456789',
     email:'akraradets@gmail.com',
     name:'Asian Institute of Technology',
@@ -42,9 +42,43 @@ Candidate.create!(username: 'akraradets',
     created_by: 'system'
 )
 
+# Resources
+bu_ait = Building.create!(
+    name: 'CSIM',
+    address: 'In AIT',
+    latitude: 14.080602,
+    longitude: 100.612749,
+    created_by: 'system'
+)
+room_cs106 = Room.create!(
+    building: bu_ait,
+    name: 'CS106',
+    floor: '1',
+    max_row: 5,
+    max_column: 6,
+    created_by: 'system'
+)
+
+# not ready Exam
 Exam.create!(
+    owner: org_ait,
+    title: 'SAD',
+    start_time: DateTime.new(2019,4,29,15,00),
+    end_time: DateTime.new(2019,4,29,18,00),
+    description: 'Waiting for reservation to be completed',
+    format: 'Wrtting',
+    fee: 5000,
+    max_enrollment: 20,
+    status: 'Waitting for reservation',
+    created_by: 'system'
+)
+
+# Ready Exam
+exam_isdm = Exam.create!(
     owner: Organization.first,
     title: 'ISDM',
+    start_time: DateTime.new(2019,4,26,13,00),
+    end_time: DateTime.new(2019,4,26,16,00),
     description: 'Ready for register',
     format: 'Multiple Choice',
     fee: 5000,
@@ -53,13 +87,9 @@ Exam.create!(
     created_by: 'system'
 )
 
-Exam.create!(
-    owner: Organization.first,
-    title: 'SAD',
-    description: 'Waiting for reservation to be completed',
-    format: 'Wrtting',
-    fee: 5000,
-    max_enrollment: 20,
-    status: 'Waitting for reservation',
+reserve_isdm = Reservation.create!(
+    exam: exam_isdm,
+    room: room_cs106,
     created_by: 'system'
 )
+

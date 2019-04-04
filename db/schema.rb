@@ -87,12 +87,14 @@ ActiveRecord::Schema.define(version: 51) do
 
   create_table "exams", force: :cascade do |t|
     t.bigint "owner_id", null: false
-    t.string "title", limit: 50, null: false
+    t.string "title", limit: 50
     t.string "description", limit: 500
     t.string "format", limit: 30
-    t.integer "fee", null: false
-    t.integer "max_enrollment", null: false
-    t.string "status", limit: 50, null: false
+    t.integer "fee"
+    t.integer "max_enrollment"
+    t.string "status", limit: 50
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.string "created_by", limit: 50
     t.string "updated_by", limit: 50
     t.datetime "created_at", null: false
@@ -131,8 +133,6 @@ ActiveRecord::Schema.define(version: 51) do
   create_table "reservations", force: :cascade do |t|
     t.bigint "exam_id"
     t.bigint "room_id"
-    t.datetime "start_time"
-    t.datetime "end_time"
     t.string "created_by", limit: 50
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
