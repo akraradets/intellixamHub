@@ -41,3 +41,25 @@ Candidate.create!(username: 'akraradets',
     password_confirmation: 'password',
     created_by: 'system'
 )
+
+Exam.create!(
+    owner: Organization.first,
+    title: 'ISDM',
+    description: 'Ready for register',
+    format: 'Multiple Choice',
+    fee: 5000,
+    max_enrollment: 20,
+    status: 'Running',
+    created_by: 'system'
+)
+
+Exam.create!(
+    owner: Organization.first,
+    title: 'SAD',
+    description: 'Waiting for reservation to be completed',
+    format: 'Wrtting',
+    fee: 5000,
+    max_enrollment: 20,
+    status: 'Waitting for reservation',
+    created_by: 'system'
+)
