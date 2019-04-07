@@ -45,7 +45,7 @@ Candidate.create!(username: 'akraradets',
 # Resources
 bu_ait = Building.create!(
     name: 'CSIM',
-    address: 'In AIT',
+    address: 'หมู่ที่ 9 58 Phahonyothin Rd, Khlong Nueng, Khlong Luang District, Pathum Thani 12120',
     latitude: 14.080602,
     longitude: 100.612749,
     created_by: 'system'

@@ -1,3 +1,4 @@
+<script>setMenuActive("#navbar_home");</script>
 <div class="row">
   <div class="card" style="border: 0px; width:100%;">
     <div class="row no-gutters">
@@ -28,7 +29,8 @@
     <div class="card-body" style="padding: 5px;">
       <div class="row">
         <div class="col-7">
-          asd
+          <button type="button" class="btn btn-outline-dark" style="border: 0px;"><i class="fas fa-bookmark"></i></button>
+          <button type="button" class="btn btn-outline-dark" style="border: 0px;"><i class="fas fa-share"></i></button>
         </div>
         <div class="col-5">
           <button class="btn btn-success btn-block" style="border-radius: 0px;"><b>Enroll</b></button>
@@ -38,91 +40,46 @@
   </div>
 </div>
 
-<div class="row">
-
-
-
-  <!-- Left side: title and imgae -->
-  <div class="col">
-
-  </div>
-  <!-- right side: all information -->
-  <div class="col">
-    <div class="card" >
-      <div class="card-body">
-        This is some text within a card body.
+<div class="row" style="margin-top: 5px;">
+  <div class="card" style=" width:100%; border-radius: 0px;">
+    <div class="card-body" style="padding: 5px;">
+      <div class="row">
+        <div class="col-7">
+          <div class="row">
+            <div class="col">
+              <h3>Description</h3>
+              <%= @exam.description %>
+            </div>
+          </div>
+          <div class="row" style="margin-top: 10px;">
+            <div class="col">
+              <h3>Prerequisite</h3>
+              <%= @exam.description %>
+            </div>
+          </div>
+        </div>
+        <div class="col-5">
+          <div class="row">
+            <div class="col">
+              <h3>Detail</h3>
+              <span><b>Exam Time:</b> <%= @exam.exam_timeslot %></span><br>
+              <span><b>Number of Question:</b> 5 </span><br>
+              <span><b>Format:</b> <%= @exam.format %></span><br>
+              <span><b>Duration:</b> <%= @exam.exam_duration %></span><br>
+            </div>
+          </div>
+          <div class="row" style="margin-top: 10px;">
+            <div class="col">
+              <h3>Address</h3>
+              <span><%= @exam.getAddress %></span><br>
+            </div>
+            <div class="col">
+              <%= raw @exam.getLocation %>
+            </div>
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
 </div>
-
-
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Owner:</strong>
-  <%= @exam.owner %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @exam.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @exam.description %>
-</p>
-
-<p>
-  <strong>Format:</strong>
-  <%= @exam.format %>
-</p>
-
-<p>
-  <strong>Fee:</strong>
-  <%= @exam.fee %>
-</p>
-
-<p>
-  <strong>Max enrollment:</strong>
-  <%= @exam.max_enrollment %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @exam.status %>
-</p>
-
-<p>
-  <strong>Enroll start:</strong>
-  <%= @exam.enroll_start %>
-</p>
-
-<p>
-  <strong>Enroll end:</strong>
-  <%= @exam.enroll_end %>
-</p>
-
-<p>
-  <strong>Exam start:</strong>
-  <%= @exam.exam_start %>
-</p>
-
-<p>
-  <strong>Exam end:</strong>
-  <%= @exam.exam_end %>
-</p>
-
-<p>
-  <strong>Created by:</strong>
-  <%= @exam.created_by %>
-</p>
-
-<p>
-  <strong>Updated by:</strong>
-  <%= @exam.updated_by %>
-</p>
-
-<%= link_to 'Edit', edit_exam_path(@exam) %> |
-<%= link_to 'Back', exams_path %>
