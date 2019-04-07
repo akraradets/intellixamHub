@@ -63,6 +63,7 @@ room_cs106 = Room.create!(
 Exam.create!(
     owner: org_ait,
     title: 'SAD',
+    code: 'AIT19-01',
     enroll_start: DateTime.now,
     enroll_end: DateTime.new(2019,4,28,00,00),
     exam_start: DateTime.new(2019,4,29,15,00),
@@ -79,6 +80,7 @@ Exam.create!(
 exam_isdm = Exam.create!(
     owner: Organization.first,
     title: 'ISDM',
+    code: 'AIT19-02',
     enroll_start: DateTime.now,
     enroll_end: DateTime.new(2019,4,26,00,00),
     exam_start: DateTime.new(2019,4,26,13,00),

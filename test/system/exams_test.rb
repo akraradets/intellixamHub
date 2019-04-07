@@ -14,6 +14,7 @@ class ExamsTest < ApplicationSystemTestCase
     visit exams_url
     click_on "New Exam"
 
+    fill_in "Code", with: @exam.code
     fill_in "Created by", with: @exam.created_by
     fill_in "Description", with: @exam.description
     fill_in "Enroll end", with: @exam.enroll_end
@@ -37,6 +38,7 @@ class ExamsTest < ApplicationSystemTestCase
     visit exams_url
     click_on "Edit", match: :first
 
+    fill_in "Code", with: @exam.code
     fill_in "Created by", with: @exam.created_by
     fill_in "Description", with: @exam.description
     fill_in "Enroll end", with: @exam.enroll_end

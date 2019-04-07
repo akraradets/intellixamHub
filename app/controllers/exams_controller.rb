@@ -69,6 +69,6 @@ class ExamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def exam_params
-      params.require(:exam).permit(:owner_id, :title, :description, :format, :fee, :max_enrollment, :status, :enroll_start, :enroll_end, :exam_start, :exam_end, :created_by, :updated_by)
+      params.require(:exam).permit(:owner_id, :title, :code, :description, :format, :fee, :max_enrollment, :status, :enroll_start, :enroll_end, :exam_start, :exam_end, :created_by, :updated_by)
     end
 end

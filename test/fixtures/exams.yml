@@ -3,29 +3,31 @@
 one:
   owner: one
   title: MyString
+  code: MyString
   description: MyString
   format: MyString
   fee: 1
   max_enrollment: 1
   status: MyString
-  enroll_start: 2019-04-07 17:53:42
-  enroll_end: 2019-04-07 17:53:42
-  exam_start: 2019-04-07 17:53:42
-  exam_end: 2019-04-07 17:53:42
+  enroll_start: 2019-04-07 18:25:25
+  enroll_end: 2019-04-07 18:25:25
+  exam_start: 2019-04-07 18:25:25
+  exam_end: 2019-04-07 18:25:25
   created_by: MyString
   updated_by: MyString
 
 two:
   owner: two
   title: MyString
+  code: MyString
   description: MyString
   format: MyString
   fee: 1
   max_enrollment: 1
   status: MyString
-  enroll_start: 2019-04-07 17:53:42
-  enroll_end: 2019-04-07 17:53:42
-  exam_start: 2019-04-07 17:53:42
-  exam_end: 2019-04-07 17:53:42
+  enroll_start: 2019-04-07 18:25:25
+  enroll_end: 2019-04-07 18:25:25
+  exam_start: 2019-04-07 18:25:25
+  exam_end: 2019-04-07 18:25:25
   created_by: MyString
   updated_by: MyString

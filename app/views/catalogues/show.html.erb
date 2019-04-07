@@ -1,21 +1,42 @@
 <div class="row">
-  <div class="card" style="border: 0px;">
+  <div class="card" style="border: 0px; width:100%;">
     <div class="row no-gutters">
       <div class="col-md-8">
         <img src="https://via.placeholder.com/800x400" class="card-img" style="max-height: 360px; width:100%; border-radius: 0px;">
       </div>
       <div class="col-md-4">
         <div class="card-body h-100" style="border: 1px solid rgba(0, 0, 0, 0.125);">
-          <h5 class="card-title"><%= @exam.title %></h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          <p>
+            <span>Enrollment Duration:</span><br>
+            <%= @exam.enroll_timeslot %>
+          </p>
+          <p>
+            <h5 class="card-title"><%= @exam.title %></h5>
+            <span><%= @exam.code %></span><br>
+            <span><%= @exam.owner.name %></span>
+          </p>
+          <p>Fee: <%= @exam.fee %> Baht</p>
+          <p>Status: </p>
+          <p>Participants: <%= @exam.candidates.count %>/<%= @exam.max_enrollment %></p>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
+<div class="row" style="margin-top: 5px;">
+  <div class="card" style=" width:100%; border-radius: 0px;">
+    <div class="card-body" style="padding: 5px;">
+      <div class="row">
+        <div class="col-7">
+          asd
+        </div>
+        <div class="col-5">
+          <button class="btn btn-success btn-block" style="border-radius: 0px;"><b>Enroll</b></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="row">
 
@@ -34,7 +55,6 @@
     </div>
   </div>
 </div>
-
 
 
 <p id="notice"><%= notice %></p>
@@ -75,13 +95,23 @@
 </p>
 
 <p>
-  <strong>Start time:</strong>
-  <%= @exam.start_time %>
+  <strong>Enroll start:</strong>
+  <%= @exam.enroll_start %>
 </p>
 
 <p>
-  <strong>End time:</strong>
-  <%= @exam.end_time %>
+  <strong>Enroll end:</strong>
+  <%= @exam.enroll_end %>
+</p>
+
+<p>
+  <strong>Exam start:</strong>
+  <%= @exam.exam_start %>
+</p>
+
+<p>
+  <strong>Exam end:</strong>
+  <%= @exam.exam_end %>
 </p>
 
 <p>

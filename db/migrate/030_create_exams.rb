@@ -3,6 +3,7 @@ class CreateExams < ActiveRecord::Migration[5.2]
     create_table :exams do |t|
       t.references :owner, null: false
       t.string :title, limit: 50
+      t.string :code, limit: 10
       t.string :description, limit: 500
       t.string :format, limit: 30
       t.integer :fee

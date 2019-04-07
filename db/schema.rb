@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 60) do
   create_table "exams", force: :cascade do |t|
     t.bigint "owner_id", null: false
     t.string "title", limit: 50
+    t.string "code", limit: 10
     t.string "description", limit: 500
     t.string "format", limit: 30
     t.integer "fee"
