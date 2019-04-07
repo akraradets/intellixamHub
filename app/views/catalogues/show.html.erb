@@ -33,7 +33,11 @@
           <button type="button" class="btn btn-outline-dark" style="border: 0px;"><i class="fas fa-share"></i></button>
         </div>
         <div class="col-5">
-          <button class="btn btn-success btn-block" style="border-radius: 0px;"><b>Enroll</b></button>
+          <%= form_tag(catalogues_url(@exam.title), method: "post") do %>
+            <button class="btn btn-success btn-block" style="border-radius: 0px;">
+              <b>Enroll</b>
+            </button>
+          <% end %>
         </div>
       </div>
     </div>

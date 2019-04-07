@@ -1,5 +1,6 @@
 class CataloguesController < ApplicationController
   layout "candidates"
+  before_action :authenticate_candidate!, only: [:enroll]
   before_action :set_exam, only: [:show]
 
   # GET /catalouges
@@ -9,10 +10,16 @@ class CataloguesController < ApplicationController
     @exams = Exam.where('status = ?','Running')
   end
   
-  # GET /catalouges/1
-  # GET /catalouges/1.json
+  # GET /catalouges/<exam.title>
+  # GET /catalouges/<exam.title>.json
   def show
   end
+  
+  # GET /catalouges/<exam.title>
+  # GET /catalouges/<exam.title>.json
+  def enroll
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

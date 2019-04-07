@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   ##### Admins Route #####
   devise_for :admins, controllers: { sessions: 'admins/sessions' }
   authenticated :admin do
-    root to: redirect('/admins/'), :as => "admin_authenticated_root"
+    root to: redirect('/admins/'), as: "admin_authenticated_root"
     get '/admins/sign_out', to: 'admins/sessions#destroy'
     namespace :admins do
       get '/', to: "landing_page#index"
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   ##### Organizations Route #####
   devise_for :organizations, controllers: { sessions: 'organizations/sessions' }
   authenticated :organization do
-    root to: redirect('/organizations/'), :as => "organization_authenticated_root"
+    root to: redirect('/organizations/'), as: "organization_authenticated_root"
     get '/organizations/sign_out', to: 'organizations/sessions#destroy'
     namespace :organizations do
       get '/', to: "landing_page#index"
@@ -33,7 +33,8 @@ Rails.application.routes.draw do
   
   ##### Global Route #####
   root to: 'catalogues#index'
-  get "/catalogues/:title(.:format)", as: :catalogues, to: "catalogues#show"
+  get  "/catalogues/:title(.:format)", to: "catalogues#show",   as: "catalogues"
+  post "/catalogues/:title(.:format)", to: "catalogues#enroll"
 
   # get 'catalogues/index'
   get '/admins', to: redirect('/admins/sign_in')
