@@ -45,6 +45,15 @@
             </li>
           </ul>
         </div>
+      <% else %>
+        <div>
+          <ul class="navbar-nav">
+            <li class="nav_item" style="margin-right:20px;">
+              <a class="btn btn-dark" href="<%= new_candidate_session_url %>" role="button" ><b>Sign in</b></a>
+              <a class="btn btn-outline-light" href="<%= new_candidate_registration_url %>" role="button" ><b>Sign up</b></a>
+            </li>
+          </ul>
+        </div>
       <% end %>
 
     </nav>
