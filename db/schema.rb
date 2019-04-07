@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 51) do
+ActiveRecord::Schema.define(version: 60) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -153,10 +153,33 @@ ActiveRecord::Schema.define(version: 51) do
     t.index ["building_id"], name: "index_rooms_on_building_id"
   end
 
+  create_table "seats", force: :cascade do |t|
+    t.bigint "reservation_id"
+    t.bigint "enrollment_id"
+    t.bigint "candidate_id"
+    t.bigint "room_id"
+    t.string "name", limit: 50
+    t.integer "row"
+    t.integer "column"
+    t.boolean "is_extra"
+    t.string "created_by", limit: 50
+    t.string "updated_by", limit: 50
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["candidate_id"], name: "index_seats_on_candidate_id"
+    t.index ["enrollment_id"], name: "index_seats_on_enrollment_id"
+    t.index ["reservation_id"], name: "index_seats_on_reservation_id"
+    t.index ["room_id"], name: "index_seats_on_room_id"
+  end
+
   add_foreign_key "enrollments", "candidates"
   add_foreign_key "enrollments", "exams"
   add_foreign_key "exams", "organizations", column: "owner_id"
   add_foreign_key "reservations", "exams"
   add_foreign_key "reservations", "rooms"
   add_foreign_key "rooms", "buildings"
+  add_foreign_key "seats", "candidates"
+  add_foreign_key "seats", "enrollments"
+  add_foreign_key "seats", "reservations"
+  add_foreign_key "seats", "rooms"
 end

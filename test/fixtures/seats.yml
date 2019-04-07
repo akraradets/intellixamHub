@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reservation: one
+  enrollment: one
+  candidate: one
+  room: one
+  name: MyString
+  row: 1
+  column: 1
+  is_extra: false
+  created_by: MyString
+  updated_by: MyString
+
+two:
+  reservation: two
+  enrollment: two
+  candidate: two
+  room: two
+  name: MyString
+  row: 1
+  column: 1
+  is_extra: false
+  created_by: MyString
+  updated_by: MyString
