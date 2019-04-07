@@ -34,9 +34,15 @@
         </div>
         <div class="col-5">
           <%= form_tag(catalogues_url(@exam.title), method: "post") do %>
-            <button class="btn btn-success btn-block" style="border-radius: 0px;">
-              <b>Enroll</b>
-            </button>
+            <% if current_candidate.isEnrollTo(@exam) %>
+              <button type="submit" class="btn btn-danger btn-block" style="border-radius: 0px;">
+                <b>Widthdraw</b>
+              </button>
+            <% else %>
+              <button type="submit" class="btn btn-success btn-block" style="border-radius: 0px;">
+                <b>Enroll</b>
+              </button>
+            <% end %>
           <% end %>
         </div>
       </div>

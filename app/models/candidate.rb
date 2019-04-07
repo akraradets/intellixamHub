@@ -7,4 +7,8 @@ class Candidate < ApplicationRecord
   # Enrollments
   has_many :enrollments
   has_many :exams, through: :enrollments
+
+  def isEnrollTo(exam)
+    !enrollments.find_by(exam: exam).nil?
+  end
 end

@@ -1,7 +1,7 @@
 class CataloguesController < ApplicationController
   layout "candidates"
   before_action :authenticate_candidate!, only: [:enroll]
-  before_action :set_exam, only: [:show]
+  before_action :set_exam, only: [:show, :enroll]
 
   # GET /catalouges
   # GET /catalouges.json
@@ -18,6 +18,21 @@ class CataloguesController < ApplicationController
   # GET /catalouges/<exam.title>
   # GET /catalouges/<exam.title>.json
   def enroll
+    if current_candidate.isEnrollTo(@exam)
+      @exam.candidates.delete(current_candidate)
+    elsif
+      @exam.candidates << current_candidate
+    end
+    render :show
+    # respond_to do |format|
+    #   if @exam.update(exam_params)
+    #     format.html { redirect_to @exam, notice: 'Exam was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @exam }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @exam.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
 
