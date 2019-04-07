@@ -1,26 +1,40 @@
-<h2>Log in</h2>
+<div style="text-align: center;">
+  <h2 style="margin-top:70px;">Login To Intellixam HUB</h2>
+</div>
+<div class="row justify-content-center" style="margin-top:40px;">
+  <div class="card" style="width: 25rem;">
+    <div class="card-body">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        
+        <div class="form-group">
+          <label>Username or Email Address</label>
+          <%= f.text_field :username, autofocus: true, autocomplete:"off", class: "form-control"%>
+        </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+        <div class="form-group">
+          <label>Password</label> <small class="float-right"><a href="<%= new_candidate_password_url %>">Forget Password?</a></small>
+          <%= f.password_field :password, autocomplete: "current-password", class: "form-control"%>
+        </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+        <% if devise_mapping.rememberable? %>
+          <div class="form-check form-group">
+            <%= f.check_box :remember_me, class:"form-check-input" %>
+            <%= f.label :remember_me, class:"form-check-label" %>
+          </div>
+        <% end %>
+        
+        <%= f.submit "Log in", class:"btn btn-info btn-block" %>
+        
+      <% end %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "candidates/shared/links" %>
+</div>
+<div class="row justify-content-center" style="margin-top:10px;">
+  <div class="card" style="width: 25rem;">
+    <div class="card-body">
+      <div style="text-align:center;">
+        New to Intellixam? <a href="<%= new_candidate_registration_url %>">Create an account</a>
+      </div>
+    </div>
+  </div>
+</div>

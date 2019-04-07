@@ -26,7 +26,8 @@ Rails.application.routes.draw do
   ##### Candidates Route #####
   devise_for :candidates, controllers: { 
     sessions: 'candidates/sessions', 
-    :registrations => 'candidates/registrations' 
+    registrations:  'candidates/registrations',
+    passwords: 'candidates/passwords' 
   }
   
   
