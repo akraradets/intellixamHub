@@ -1,0 +1,98 @@
+<div class="row">
+  <div class="card" style="border: 0px;">
+    <div class="row no-gutters">
+      <div class="col-md-8">
+        <img src="https://via.placeholder.com/800x400" class="card-img" style="max-height: 360px; width:100%; border-radius: 0px;">
+      </div>
+      <div class="col-md-4">
+        <div class="card-body h-100" style="border: 1px solid rgba(0, 0, 0, 0.125);">
+          <h5 class="card-title"><%= @exam.title %></h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row">
+
+
+
+  <!-- Left side: title and imgae -->
+  <div class="col">
+
+  </div>
+  <!-- right side: all information -->
+  <div class="col">
+    <div class="card" >
+      <div class="card-body">
+        This is some text within a card body.
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @exam.owner %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @exam.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @exam.description %>
+</p>
+
+<p>
+  <strong>Format:</strong>
+  <%= @exam.format %>
+</p>
+
+<p>
+  <strong>Fee:</strong>
+  <%= @exam.fee %>
+</p>
+
+<p>
+  <strong>Max enrollment:</strong>
+  <%= @exam.max_enrollment %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @exam.status %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @exam.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @exam.end_time %>
+</p>
+
+<p>
+  <strong>Created by:</strong>
+  <%= @exam.created_by %>
+</p>
+
+<p>
+  <strong>Updated by:</strong>
+  <%= @exam.updated_by %>
+</p>
+
+<%= link_to 'Edit', edit_exam_path(@exam) %> |
+<%= link_to 'Back', exams_path %>

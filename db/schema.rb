@@ -93,8 +93,10 @@ ActiveRecord::Schema.define(version: 60) do
     t.integer "fee"
     t.integer "max_enrollment"
     t.string "status", limit: 50
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.datetime "enroll_start"
+    t.datetime "enroll_end"
+    t.datetime "exam_start"
+    t.datetime "exam_end"
     t.string "created_by", limit: 50
     t.string "updated_by", limit: 50
     t.datetime "created_at", null: false

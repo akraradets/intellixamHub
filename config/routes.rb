@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  
   resources :exams
-  resources :rooms
   ##### Admins Route #####
   devise_for :admins, controllers: { sessions: 'admins/sessions' }
   authenticated :admin do
@@ -34,10 +32,16 @@ Rails.application.routes.draw do
   
   ##### Global Route #####
   root to: 'catalogues#index'
+  get "/catalogues/:title(.:format)", as: :catalogues, to: "catalogues#show"
+
   # get 'catalogues/index'
   get '/admins', to: redirect('/admins/sign_in')
   get '/organizations', to: redirect('/organizations/sign_in')
+
+
+
   resources :buildings
+  resources :rooms
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

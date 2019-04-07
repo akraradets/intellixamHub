@@ -34,7 +34,7 @@
         <td><%= exam.end_time %></td>
         <td><%= exam.created_by %></td>
         <td><%= exam.updated_by %></td>
-        <td><%= link_to 'Show', exam %></td>
+        <td><%= link_to 'Show', catalogues_path(exam.title) %></td>
         <td><%= link_to 'Edit', edit_exam_path(exam) %></td>
         <td><%= link_to 'Destroy', exam, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

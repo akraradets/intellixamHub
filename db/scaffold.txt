@@ -6,7 +6,7 @@ rails g scaffold building name:string{50} address:string{200} 'latitude:decimal{
 rails g scaffold rooms building:references name:string{50} floor:string{3} max_row:integer max_column:integer created_by:string{50} updated_by:string{50}
 rails g model seats reservation:references enrollment:references candidate:references room:references name:string{50} row:integer column:integer is_extra:boolean created_by:string{50}  updated_by:string{50}
 
-rails g scaffold exam owner:references title:string{50}  description:string{500} format:string{30} fee:integer max_enrollment:integer status:string{50} start_time:datetime end_time:datetime created_by:string{50} updated_by:string{50}
+rails g scaffold exam owner:references title:string{50}  description:string{500} format:string{30} fee:integer max_enrollment:integer status:string{50} enroll_start:datetime enroll_end:datetime exam_start:datetime exam_end:datetime created_by:string{50} updated_by:string{50}
 
 ### Join Table ###
 # exam - enrollment - candidate

@@ -8,8 +8,10 @@ one:
   fee: 1
   max_enrollment: 1
   status: MyString
-  start_time: 2019-04-04 14:40:25
-  end_time: 2019-04-04 14:40:25
+  enroll_start: 2019-04-07 17:53:42
+  enroll_end: 2019-04-07 17:53:42
+  exam_start: 2019-04-07 17:53:42
+  exam_end: 2019-04-07 17:53:42
   created_by: MyString
   updated_by: MyString
 
@@ -21,7 +23,9 @@ two:
   fee: 1
   max_enrollment: 1
   status: MyString
-  start_time: 2019-04-04 14:40:25
-  end_time: 2019-04-04 14:40:25
+  enroll_start: 2019-04-07 17:53:42
+  enroll_end: 2019-04-07 17:53:42
+  exam_start: 2019-04-07 17:53:42
+  exam_end: 2019-04-07 17:53:42
   created_by: MyString
   updated_by: MyString
