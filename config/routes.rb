@@ -29,7 +29,9 @@ Rails.application.routes.draw do
     registrations:  'candidates/registrations',
     passwords: 'candidates/passwords' 
   }
-  
+  authenticated :candidates do
+    root to: redirect('/'), as: "candidate_authenticated_root"
+  end
   
   ##### Global Route #####
   root to: 'catalogues#index'
