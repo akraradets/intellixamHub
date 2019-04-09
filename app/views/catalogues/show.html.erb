@@ -34,7 +34,7 @@
         </div>
         <div class="col-5">
           <%= form_tag(catalogues_url(@exam.title), method: "post") do %>
-            <% if current_candidate.isEnrollTo(@exam) %>
+            <% if candidate_signed_in? and current_candidate.isEnrollTo(@exam) %>
               <button type="submit" class="btn btn-danger btn-block" style="border-radius: 0px;">
                 <b>Widthdraw</b>
               </button>
