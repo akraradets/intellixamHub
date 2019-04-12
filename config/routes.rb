@@ -35,8 +35,9 @@ Rails.application.routes.draw do
   
   ##### Global Route #####
   root to: 'catalogues#index'
-  get  "/catalogues/:title(.:format)", to: "catalogues#show",   as: "catalogues"
-  post "/catalogues/:title(.:format)", to: "catalogues#enroll"
+  get  "/catalogues/:title", to: "catalogues#show",   as: "catalogues"
+  post "/catalogues/:title", to: "catalogues#enroll"
+  post "/catalogues/:title/payment", to: "catalogues#payment", as: "catalogue_payment"
 
   # get 'catalogues/index'
   get '/admins', to: redirect('/admins/sign_in')
