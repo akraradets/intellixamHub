@@ -180,8 +180,26 @@
                   </tr>
                 </thead>
                 <tbody>
-                <% if %>
+                <% if @enroll_infor.hasEvidence("paySlip") %>
+                  <% @paySlip = @enroll_infor.getEvidence("paySlip") %>
                   <tr>
+                    <td>Pay Slip</td>
+                    <td><%= @paySlip.description %></td>
+                    <td><%= @paySlip.attachDate %></td>
+                    <td><%= @paySlip.status %></td>
+                    <td>
+                      <a href="" >
+                        <i class="fas fa-edit"></i>
+                      </a>
+                    </td>
+                    <td>
+                      <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="<%= catalogue_attach_remove_url(@exam.title,@paySlip) %>">
+                        <i class="far fa-trash-alt"></i>
+                      </a>
+                    </td>
+                  </tr>
+                <% else %>
+                <tr>
                     <td>Pay Slip</td>
                     <td></td>
                     <td></td>
@@ -190,6 +208,7 @@
                       <button class="btn btn-link" data-toggle="modal" data-step="1" data-target="#attach-modal">attach</button>
                     </td>
                   </tr>
+                <% end %>
                   <tr>
                     <td>Transcription</td>
                     <td>ku.pdf</td>

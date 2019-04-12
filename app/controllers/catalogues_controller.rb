@@ -24,7 +24,9 @@ class CataloguesController < ApplicationController
   # POST /catalouges/<exam.title>.json
   def enroll
     if current_candidate.isEnrollTo(@exam)
-      @exam.candidates.delete(current_candidate)
+      @enroll_infor = @exam.enrollments.find_by(candidate: current_candidate)
+      @enroll_infor.destroy
+      # @exam.candidates.delete(current_candidate)
     elsif
       @exam.candidates << current_candidate
       @enroll_infor = @exam.enrollments.find_by(candidate: current_candidate)
@@ -50,16 +52,17 @@ class CataloguesController < ApplicationController
     @evi = Evidence.new
     @evi.enrollment = @enroll_infor
     @evi.name = "paySlip"
-    # @evi.description = params[:paySlip]
-    # @evi.fileType = params[:paySlip].split(".")[1]
+    @evi.description = params[:paySlip].original_filename
+    @evi.fileType = params[:paySlip].original_filename.split(".")[1]
     @evi.status = "verification"
-    if @evi.save
-      @evi = @enroll_infor.evidences.find_by(name: "paySlip")
-      @evi.file.attach(params[:paySlip])
-      render :show
-    else
-      render :show
-    end
+    @evi.file.attach(params[:paySlip])
+    @evi.save
+    render :show
+  end
+
+  #DELETE /catalogues/:title/attach/:id"
+  def attach_remove
+    Evidence.find(params[:id]).destroy
   end
 
   private
