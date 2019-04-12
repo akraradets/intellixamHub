@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  enrollment: one
+  name: MyString
+  description: MyString
+  fileType: MyString
+  fileSize: 1
+  status: MyString
+  created_by: MyString
+  updated_by: MyString
+
+two:
+  enrollment: two
+  name: MyString
+  description: MyString
+  fileType: MyString
+  fileSize: 1
+  status: MyString
+  created_by: MyString
+  updated_by: MyString

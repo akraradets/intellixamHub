@@ -1,8 +1,9 @@
 class CataloguesController < ApplicationController
   layout "candidates"
-  before_action :authenticate_candidate!, only: [:enroll]
-  before_action :set_exam, only: [:show, :enroll, :payment]
-  before_action :set_enroll, only: [:payment]
+  before_action :authenticate_candidate!, except: [:index, :show]
+  before_action :set_exam, only: [:show, :enroll, :payment, :attach_new]
+  before_action :set_enroll, only: [:payment, :attach_new]
+  before_action :set_evidences, only: [:attach]
 
   # GET /catalouges
   # GET /catalouges.json
@@ -14,7 +15,7 @@ class CataloguesController < ApplicationController
   # GET /catalouges/<exam.title>
   # GET /catalouges/<exam.title>.json
   def show
-    if current_candidate.isEnrollTo(@exam)
+    if current_candidate.nil? == false and current_candidate.isEnrollTo(@exam)
       @enroll_infor = @exam.enrollments.find_by(candidate: current_candidate)
     end
   end
@@ -44,12 +45,35 @@ class CataloguesController < ApplicationController
     render :show
   end
 
+  # POST
+  def attach_new
+    @evi = Evidence.new
+    @evi.enrollment = @enroll_infor
+    @evi.name = "paySlip"
+    # @evi.description = params[:paySlip]
+    # @evi.fileType = params[:paySlip].split(".")[1]
+    @evi.status = "verification"
+    if @evi.save
+      @evi = @enroll_infor.evidences.find_by(name: "paySlip")
+      @evi.file.attach(params[:paySlip])
+      render :show
+    else
+      render :show
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_exam
       @exam = Exam.find_by(title: params[:title])
     end
+
     def set_enroll
+      # a = Exam.second.enrollments.find_by(candidate: Candidate.first)
       @enroll_infor = @exam.enrollments.find_by(candidate: current_candidate)
+    end
+
+    def set_evidences
+      @evidences = @enroll_infor.evidences
     end
 end

@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   get  "/catalogues/:title", to: "catalogues#show",   as: "catalogues"
   post "/catalogues/:title", to: "catalogues#enroll"
   post "/catalogues/:title/payment", to: "catalogues#payment", as: "catalogue_payment"
+  post "/catalogues/:title/attach/new", to: "catalogues#attach_new", as: "catalogue_attach_new"
 
   # get 'catalogues/index'
   get '/admins', to: redirect('/admins/sign_in')

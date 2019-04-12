@@ -51,7 +51,7 @@
 </div>
 
 <!-- When enroll, we show enroll status -->
-<% if current_candidate.isEnrollTo(@exam) %>
+<% if current_candidate.nil? == false && current_candidate.isEnrollTo(@exam) %>
 <div class="row" style="margin-top: 5px;">
   <div class="card" style=" width:100%; border-radius: 0px;">
     <div class="card-body" style="padding: 5px;">
@@ -120,7 +120,7 @@
             </div>
           </div>
         </div>
-        <% if current_candidate.isEnrollTo(@exam) %>
+        <% if current_candidate.nil? == false && current_candidate.isEnrollTo(@exam) %>
         <!-- Select Payment Method -->
         <div class="tab-pane fade" id="payFee" role="tabpanel" aria-labelledby="payFee-tab">
           <div class="row">
@@ -149,9 +149,7 @@
                         <label class="form-check-label" for="offline">I have paid the fee, and I will upload the pay's slip</label>
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-success">
-                      <b>Submit</b>
-                    </button>
+                    <button type="submit" class="btn btn-success"><b>Submit</b></button>
                   <% end %>
                 </div>
               </div>
@@ -166,10 +164,50 @@
             </div>
           </div>
         </div>
+        <!-- Upload section -->
         <div class="tab-pane fade" id="attachDocument" role="tabpanel" aria-labelledby="attachDocument-tab">
           <div class="row">
             <div class="col">
-              sdfkj
+              <table class="table table-sm">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>Document Name</th>
+                    <th>File</th>
+                    <th>Attach Date</th>
+                    <th>Status</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                <% if %>
+                  <tr>
+                    <td>Pay Slip</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td colspan=2>
+                      <button class="btn btn-link" data-toggle="modal" data-step="1" data-target="#attach-modal">attach</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Transcription</td>
+                    <td>ku.pdf</td>
+                    <td>23/2/2019</td>
+                    <td>Waiting for verification</td>
+                    <td>
+                      <a href="" >
+                        <i class="fas fa-edit"></i>
+                      </a>
+                    </td>
+                    <td>
+                      <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="">
+                        <i class="far fa-trash-alt"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -181,3 +219,45 @@
     </div>
   </div>
 </div>
+
+<div class="modal multi-step" id="attach-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title step-1" data-step="1">Attach Document</h4>
+                <h4 class="modal-title step-new" data-step="new">Upload New File</h4>
+                <h4 class="modal-title step-myFiles" data-step="myFiles">Attach from myFiles</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body step step-1">
+                <button type="button" class="btn btn-link step step-1" data-step="1" onclick="sendEvent('#attach-modal', 'new')">Upload new file</button>
+                <br>
+                <button type="button" class="btn btn-link step step-1" data-step="1" onclick="sendEvent('#attach-modal', 'myFiles')">Attach from myFiles</button>
+            </div>
+            <div class="modal-body step step-new">
+              <%= form_tag(catalogue_attach_new_url(@exam.title), method: "post", multipart: true) do %>
+                <div class="form-group">
+                  <input type="file" name="paySlip" id="paySlip">
+                </div>
+                <button type="submit" class="btn btn-success"><b>Attach</b></button>
+              <% end %>
+            </div>
+            <div class="modal-body step step-myFiles">
+                This is the final step
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default step step-new step-myFiles" onclick="sendEvent('#attach-modal', '1')">Back</button>                
+            </div>
+        </div>
+    </div>
+</div>
+        
+<%= javascript_include_tag "multi-step-modal" %>
+<script>
+sendEvent = function(sel, step) {
+    var sel_event = new CustomEvent('next.m.' + step, {detail: {step: step}});
+    window.dispatchEvent(sel_event);
+}
+</script>

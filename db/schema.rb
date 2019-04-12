@@ -114,6 +114,20 @@ ActiveRecord::Schema.define(version: 60) do
     t.index ["exam_id"], name: "index_enrollments_on_exam_id"
   end
 
+  create_table "evidences", force: :cascade do |t|
+    t.bigint "enrollment_id"
+    t.string "name", limit: 100
+    t.string "description", limit: 100
+    t.string "fileType", limit: 10
+    t.integer "fileSize"
+    t.string "status", limit: 20
+    t.string "created_by", limit: 50
+    t.string "updated_by", limit: 50
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["enrollment_id"], name: "index_evidences_on_enrollment_id"
+  end
+
   create_table "exams", force: :cascade do |t|
     t.bigint "owner_id", null: false
     t.string "title", limit: 50
@@ -207,6 +221,7 @@ ActiveRecord::Schema.define(version: 60) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "enrollments", "candidates"
   add_foreign_key "enrollments", "exams"
+  add_foreign_key "evidences", "enrollments"
   add_foreign_key "exams", "organizations", column: "owner_id"
   add_foreign_key "reservations", "exams"
   add_foreign_key "reservations", "rooms"
