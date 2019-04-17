@@ -1,8 +1,8 @@
 class CataloguesController < ApplicationController
   layout "candidates"
   before_action :authenticate_candidate!, except: [:index, :show]
-  before_action :set_exam, only: [:show, :enroll, :payment, :attach_new]
-  before_action :set_enroll, only: [:payment, :attach_new]
+  before_action :set_exam, only: [:show, :enroll, :payment, :attach_new, :attach_remove, :cheat]
+  before_action :set_enroll, only: [:payment, :attach_new, :cheat]
   before_action :set_evidences, only: [:attach]
 
   # GET /catalouges
@@ -54,15 +54,25 @@ class CataloguesController < ApplicationController
     @evi.name = "paySlip"
     @evi.description = params[:paySlip].original_filename
     @evi.fileType = params[:paySlip].original_filename.split(".")[1]
-    @evi.status = "verification"
+    @evi.status = "Verifying"
     @evi.file.attach(params[:paySlip])
     @evi.save
-    render :show
+    redirect_to catalogues_path(@exam.title)
+    # render :show
   end
 
-  #DELETE /catalogues/:title/attach/:id"
+  #DELETE /catalogues/:title/attach/:id
   def attach_remove
     Evidence.find(params[:id]).destroy
+    redirect_to catalogues_path(@exam.title)
+    # render :show
+  end
+
+  #GET /catalogues/:title/cheat
+  def cheat
+    @enroll_infor.status = "Complete"
+    @enroll_infor.save
+    redirect_to catalogues_path(@exam.title)
   end
 
   private

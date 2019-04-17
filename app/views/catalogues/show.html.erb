@@ -69,6 +69,13 @@
           <a class="nav-link" id="attachDocument-tab" data-toggle="tab" href="#attachDocument" role="tab" aria-controls="attachDocument" aria-selected="false">Attach Document</a>
           <% end %>
         </li>
+        <li class="nav-item">
+          <% if @enroll_infor.status != "Complete" %>
+          <a class="nav-link disabled" id="complete-tab" data-toggle="tab" href="#complete" role="tab" aria-controls="complete" aria-selected="false">Complete</a>
+          <% else %>
+          <a class="nav-link" id="complete-tab" data-toggle="tab" href="#complete" role="tab" aria-controls="complete" aria-selected="false">Complete</a>
+          <% end %>
+        </li>
       </ul>
     </div>
   </div>
@@ -213,7 +220,7 @@
                     <td>Transcription</td>
                     <td>ku.pdf</td>
                     <td>23/2/2019</td>
-                    <td>Waiting for verification</td>
+                    <td>Verifying</td>
                     <td>
                       <a href="" >
                         <i class="fas fa-edit"></i>
@@ -227,10 +234,21 @@
                   </tr>
                 </tbody>
               </table>
+              <!-- Cheat button -->
+              <% if @enroll_infor.hasEvidence("paySlip") %>
+                <a class="btn btn-default" href="<%= catalogue_cheat_url(@exam.title) %>">Cheat Button</a>
+              <% end %>
             </div>
           </div>
         </div>
-
+        <!-- Upload section -->
+        <div class="tab-pane fade" id="complete" role="tabpanel" aria-labelledby="complete-tab">
+          <div class="row">
+            <div class="col">
+            sdf
+            </div>
+          </div>
+        </div>
         <% end %>
       </div>
 
