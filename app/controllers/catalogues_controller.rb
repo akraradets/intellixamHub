@@ -18,10 +18,9 @@ class CataloguesController < ApplicationController
   def show
     if current_candidate.nil? == false and current_candidate.isEnrollTo(@exam)
       @enroll_infor = @exam.enrollments.find_by(candidate: current_candidate)
-    end
-    if @enroll_infor.seat.nil? == false
-      
-      @qr = RQRCode::QRCode.new( @enroll_infor.to_json, :size => 16 )
+      if current_candidate.nil? == false and @enroll_infor.seat.nil? == false
+        @qr = RQRCode::QRCode.new( @enroll_infor.to_json, :size => 16 )
+      end
     end
   end
   

@@ -42,6 +42,45 @@ Candidate.create!(username: 'akraradets',
     created_by: 'system'
 )
 
+c1 = Candidate.create!(username: '1',
+    firstname: '1',
+    lastname: '1',
+    email: '1@ait.asia',
+    citizen_id: '1',
+    phone_no: '1',
+    gender: 'M',
+    birthday: Date.new(1992,9,23),
+    password: 'password', 
+    password_confirmation: 'password',
+    created_by: 'system'
+)
+
+c2 = Candidate.create!(username: '2',
+    firstname: '2',
+    lastname: '2',
+    email: '2@ait.asia',
+    citizen_id: '2',
+    phone_no: '2',
+    gender: 'M',
+    birthday: Date.new(1992,9,23),
+    password: 'password', 
+    password_confirmation: 'password',
+    created_by: 'system'
+)
+
+c3 = Candidate.create!(username: '3',
+    firstname: '3',
+    lastname: '3',
+    email: '3@ait.asia',
+    citizen_id: '3',
+    phone_no: '3',
+    gender: 'M',
+    birthday: Date.new(1992,9,23),
+    password: 'password', 
+    password_confirmation: 'password',
+    created_by: 'system'
+)
+
 # Resources
 bu_ait = Building.create!(
     name: 'CSIM',
@@ -99,3 +138,32 @@ reserve_isdm = Reservation.create!(
     created_by: 'system'
 )
 
+exam_isdm.candidates << c1
+exam_isdm_c1 = exam_isdm.enrollments.find_by(candidate: c1)
+exam_isdm_c1.status = "Complete"
+exam_isdm_c1.save
+
+seat_c1 = exam_isdm.getFirstEmptySeat
+seat_c1.candidate = c1
+seat_c1.enrollment = exam_isdm_c1
+seat_c1.save
+
+exam_isdm.candidates << c2
+exam_isdm_c2 = exam_isdm.enrollments.find_by(candidate: c2)
+exam_isdm_c2.status = "Complete"
+exam_isdm_c2.save
+
+seat_c2 = exam_isdm.getFirstEmptySeat
+seat_c2.candidate = c2
+seat_c2.enrollment = exam_isdm_c2
+seat_c2.save
+
+exam_isdm.candidates << c3
+exam_isdm_c3 = exam_isdm.enrollments.find_by(candidate: c3)
+exam_isdm_c3.status = "Complete"
+exam_isdm_c3.save
+
+seat_c3 = exam_isdm.getFirstEmptySeat
+seat_c3.candidate = c3
+seat_c3.enrollment = exam_isdm_c3
+seat_c3.save

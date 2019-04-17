@@ -18,7 +18,7 @@
             <span><%= @exam.owner.name %></span>
           </p>
           <p>Fee: <%= @exam.fee %> Baht</p>
-          <p>Status: <% if current_candidate.isEnrollTo(@exam) %> <%= @enroll_infor.status %> <% end %></p>
+          <p>Status: <% if current_candidate.nil? == false and current_candidate.isEnrollTo(@exam) %> <%= @enroll_infor.status %> <% end %></p>
           <p>Participants: <%= @exam.candidates.count %>/<%= @exam.max_enrollment %></p>
         </div>
       </div>
