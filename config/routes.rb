@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admins do
+    get 'exams/index'
+  end
   resources :exams
   ##### Admins Route #####
   devise_for :admins, controllers: { sessions: 'admins/sessions' }
@@ -6,7 +9,11 @@ Rails.application.routes.draw do
     root to: redirect('/admins/'), as: "admin_authenticated_root"
     get '/admins/sign_out', to: 'admins/sessions#destroy'
     namespace :admins do
-      get '/', to: "landing_page#index"
+      get '/', to: "landing_page#index", as: "home"
+      get '/exams', to: "exams#index", as: "exams"
+      get '/exams/:title', to: 'exams#show', as: "exam_show"
+      get '/exams/:title/checkin', to: 'exams#checkin', as: "exam_checkin"
+      post '/exams/:title/checkin/:enroll_id', to: 'exams#checkin_post', as: "exam_checkin_post"
       # can CRUD organizations
       resources :organizations
     end

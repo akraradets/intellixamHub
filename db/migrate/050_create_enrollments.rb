@@ -4,6 +4,7 @@ class CreateEnrollments < ActiveRecord::Migration[5.2]
       t.references :exam, foreign_key: true
       t.references :candidate, foreign_key: true
       t.string :status, limit: 50
+      t.boolean :isCheckin, default: false
       t.inet :ip
       t.string :paymentMethod, limit: 20
       t.timestamps

@@ -1,0 +1,46 @@
+<script>
+  setMenuActive("#navbar_exam");
+</script>
+<form>
+    <form>
+</form>
+<table class="table table-striped table-sm table-hover" style="margin-top: 10px;">
+  <thead class="thead-dark">
+    <tr>
+      <th>Candidate Name</th>
+      <th>Official ID</th>
+      <th>Seat</th>
+      <th>Enroll Status</th>
+      <th>Check-in</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @enrollments.each do |enroll| %>
+      <tr>
+        <td><%= enroll.candidate.firstname %> <%= enroll.candidate.lastname %></td>
+        <td><%= enroll.candidate.citizen_id %></td>
+        <td><%= enroll.seat.name %></td>
+        <td><%= enroll.status %></td>
+        <td>
+          <a data-method="post" href="<%= admins_exam_checkin_post_path(@exam.title,enroll) %>">
+            <% if enroll.isCheckin %>
+              <span class="badge badge-success">Checked-in</span>
+            <% else %>
+              <span class="badge badge-warning">Not Checked-in</span>
+            <% end %>
+          </a>
+        <td>
+          <a href="<%= edit_admins_organization_path(enroll) %>" >
+            <i class="fas fa-edit"></i>
+          </a>
+        </td>
+        <td>
+          <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="<%= admins_organization_path(enroll) %>">
+            <i class="far fa-trash-alt"></i>
+          </a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

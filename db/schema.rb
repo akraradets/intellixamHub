@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 60) do
     t.bigint "exam_id"
     t.bigint "candidate_id"
     t.string "status", limit: 50
+    t.boolean "isCheckin", default: false
     t.inet "ip"
     t.string "paymentMethod", limit: 20
     t.datetime "created_at", null: false
