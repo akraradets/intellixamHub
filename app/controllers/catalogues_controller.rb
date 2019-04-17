@@ -1,3 +1,4 @@
+require 'rqrcode'
 class CataloguesController < ApplicationController
   layout "candidates"
   before_action :authenticate_candidate!, except: [:index, :show]
@@ -18,6 +19,10 @@ class CataloguesController < ApplicationController
     if current_candidate.nil? == false and current_candidate.isEnrollTo(@exam)
       @enroll_infor = @exam.enrollments.find_by(candidate: current_candidate)
     end
+    if @enroll_infor.seat.nil? == false
+      
+      @qr = RQRCode::QRCode.new( @enroll_infor.to_json, :size => 16 )
+    end
   end
   
   # POST /catalouges/<exam.title>
@@ -35,7 +40,7 @@ class CataloguesController < ApplicationController
       @enroll_infor.paymentMethod = ""
       @enroll_infor.save
     end
-    render :show
+    redirect_to catalogues_path(@exam.title)
   end
 
   # POST /catalouges/payment/<exam.title>
@@ -44,7 +49,7 @@ class CataloguesController < ApplicationController
     @enroll_infor.status = "uploadDocument"
     @enroll_infor.paymentMethod = params[:paymentMethod]
     @enroll_infor.save
-    render :show
+    redirect_to catalogues_path(@exam.title)
   end
 
   # POST
@@ -72,6 +77,12 @@ class CataloguesController < ApplicationController
   def cheat
     @enroll_infor.status = "Complete"
     @enroll_infor.save
+    # Once the status change to Complete
+    # Assign seat
+    seat = @exam.getFirstEmptySeat
+    seat.candidate = current_candidate
+    seat.enrollment = @enroll_infor
+    seat.save
     redirect_to catalogues_path(@exam.title)
   end
 

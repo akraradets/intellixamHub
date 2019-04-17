@@ -1,13 +1,14 @@
 class Exam < ApplicationRecord
   belongs_to :owner, :class_name => 'Organization'
 
-    # Enrollments
+  # Enrollments
   has_many :enrollments
   has_many :candidates, through: :enrollments
 
   # Reservations
   has_many :reservations
   has_many :rooms, through: :reservations
+  has_many :seats, through: :reservations
 
   def exam_timeslot
     return exam_start.strftime("%d %b %Y %H:%M") + " - " + exam_end.strftime("%d %b %Y %H:%M")
@@ -37,6 +38,11 @@ class Exam < ApplicationRecord
   end
 
   def getAddress
-    return rooms[0].building.address
+    return rooms.first.building.address
   end
+
+  def getFirstEmptySeat
+    seats.where(enrollment: nil).first
+  end
+
 end

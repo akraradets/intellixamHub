@@ -1,6 +1,7 @@
 class Reservation < ApplicationRecord
   belongs_to :exam
   belongs_to :room
+  has_many :seats
 
   after_save :createSeats
 
